@@ -146,7 +146,7 @@ function chart(data) {
         { label: " ", y: 0},
         { label: data.ranking[0]['RANKED_FLEX_SR']['nickname'] + '  FLEX [' + data.ranking[0]['RANKED_FLEX_SR']['tier'] + ' ' + data.ranking[0]['RANKED_FLEX_SR']['rank'] + ' ' + data.ranking[0]['RANKED_FLEX_SR']['leaguePoints'] + ' LP]', y: count(data, 0, 'RANKED_FLEX_SR'), color: get_color(data.ranking[0]['RANKED_FLEX_SR']['tier'])},
         { label: data.ranking[1]['RANKED_FLEX_SR']['nickname'] + '  FLEX [' + data.ranking[1]['RANKED_FLEX_SR']['tier'] + ' ' + data.ranking[1]['RANKED_FLEX_SR']['rank'] + ' ' + data.ranking[1]['RANKED_FLEX_SR']['leaguePoints'] + ' LP]', y: count(data, 1, 'RANKED_FLEX_SR'), color: get_color(data.ranking[1]['RANKED_FLEX_SR']['tier'])},
-        { label: data.ranking[2]['RANKED_FLEX_SR']['nickname'] + '  FLEX [' + data.ranking[2]['RANKED_FLEX_SR']['tier'] + ' ' + data.ranking[2]['RANKED_FLEX_SR']['rank'] + ' ' + data.ranking[2]['RANKED_FLEX_SR']['leaguePoints'] + ' LP]', y: count(data, 2, 'RANKED_FLEX_SR'), color: get_color("BRONZE")},
+        { label: data.ranking[2]['RANKED_FLEX_SR']['nickname'] + '  FLEX [' + data.ranking[2]['RANKED_FLEX_SR']['tier'] + ' ' + data.ranking[2]['RANKED_FLEX_SR']['rank'] + ' ' + data.ranking[2]['RANKED_FLEX_SR']['leaguePoints'] + ' LP]', y: count(data, 2, 'RANKED_FLEX_SR'), color: get_color(data.ranking[2]['RANKED_FLEX_SR']['tier'])},
         { label: data.ranking[3]['RANKED_FLEX_SR']['nickname'] + '  FLEX [' + data.ranking[3]['RANKED_FLEX_SR']['tier'] + ' ' + data.ranking[3]['RANKED_FLEX_SR']['rank'] + ' ' + data.ranking[3]['RANKED_FLEX_SR']['leaguePoints'] + ' LP]', y: count(data, 3, 'RANKED_FLEX_SR'), color: get_color(data.ranking[3]['RANKED_FLEX_SR']['tier'])},
         ]
     }]
