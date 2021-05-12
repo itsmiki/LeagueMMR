@@ -7,7 +7,7 @@ app = flask.Flask(__name__)
 app.config["DEBUG"] = True
 CORS(app)
 
-api_key = 'RGAPI-4c0c0ef8-ecd1-4054-a224-2f76eedf7249'
+api_key = ''
 API_KEYS = {}
 
 @app.route('/', methods=['GET'])
