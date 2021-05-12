@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "bootstrap": "^5.0.0-beta3",
+    "foundation-sites": "^6.6.3"
+  }
+}
