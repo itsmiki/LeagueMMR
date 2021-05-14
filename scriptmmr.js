@@ -173,8 +173,11 @@ function generateTable(table, data) {
                 var rank = element[key].split(' ')[0]
                 var str = element[key];
                 var name = str.substr(str.indexOf('(') + 1, str.indexOf(')') - str.indexOf('(') - 1);
-                if (name.indexOf('`') != -1) {
+                if (name.indexOf('`') != -1 && name != 'Kog`Maw' && name != 'Rek`Sai') {
                     name = name.substr(0, 1) + name.substr(1).toLowerCase()
+                }
+                if (name == 'Wukong') {
+                    name = 'MonkeyKing';
                 }
                 name = name.replace(/\s+/g, '')
                 name = name.replace(/`+/g, '')
