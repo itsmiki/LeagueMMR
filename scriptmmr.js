@@ -171,7 +171,7 @@ function generateTable(table, data) {
             if(key == "NAME") {
                 var img = document.createElement("img");
                 var rank = element[key].split(' ')[0]
-                img.src = "http://ddragon.leagueoflegends.com/cdn/11.10.1/img/champion/Aatrox.png";
+                img.src = "http://ddragon.leagueoflegends.com/cdn/11.10.1/img/champion/" + element[key]  + ".png";
                 img.style.width = '25px';
                 img.style.height = 'auto';
                 cell.appendChild(img);
