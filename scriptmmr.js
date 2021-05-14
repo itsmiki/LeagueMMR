@@ -187,5 +187,5 @@ function ucfirst(str) {
     if(str == "undefined null null LP")
         return "Unranked";
     var firstLetter = str.substr(0, 1);
-    return firstLetter + str.substr(1).toLowerCase();
+    return firstLetter + str.substr(1, str.indexOf(' ')).toLowerCase() + str.substr(str.indexOf(' ') + 1);
 }
