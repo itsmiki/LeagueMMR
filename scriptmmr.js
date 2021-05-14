@@ -172,8 +172,8 @@ function generateTable(table, data) {
                 var img = document.createElement("img");
                 var rank = element[key].split(' ')[0]
                 var str = element[key];
-                var name = str.substr(str.indexOf('(') + 1, (str.indexOf(')') - 1));
-                img.src = "http://ddragon.leagueoflegends.com/cdn/11.10.1/img/champion/" + name  + ".png";
+                var name = str.substr(str.indexOf('(') + 1, str.indexOf(')') - 1);
+                img.src = "http://ddragon.leagueoflegends.com/cdn/11.10.1/img/champion/" + name.substr(1, length(str)-1)  + ".png";
                 console.log("http://ddragon.leagueoflegends.com/cdn/11.10.1/img/champion/" + name  + ".png")
                 img.style.width = '25px';
                 img.style.height = 'auto';
