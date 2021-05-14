@@ -168,6 +168,14 @@ function generateTable(table, data) {
                 img.style.height = 'auto';
                 cell.appendChild(img);
             }
+            if(key = "NAME") {
+                var img = document.createElement("img");
+                var rank = element[key].split(' ')[0]
+                img.src = "http://ddragon.leagueoflegends.com/cdn/11.10.1/img/champion/Aatrox.png";
+                img.style.width = '25px';
+                img.style.height = 'auto';
+                cell.appendChild(img);
+            }
             p.appendChild(text);
             cell.appendChild(p);
 
