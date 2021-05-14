@@ -173,6 +173,9 @@ function generateTable(table, data) {
                 var rank = element[key].split(' ')[0]
                 var str = element[key];
                 var name = str.substr(str.indexOf('(') + 1, str.indexOf(')') - str.indexOf('(') - 1);
+                if (name.indexOf('`') != -1) {
+                    name = name.substr(0, 1) + name.substr(1).toLowerCase()
+                }
                 name = name.replace(/\s+/g, '')
                 name = name.replace(/`+/g, '')
                 img.src = "http://ddragon.leagueoflegends.com/cdn/11.10.1/img/champion/" + name + ".png";
