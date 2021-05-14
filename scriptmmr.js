@@ -99,16 +99,16 @@ function ask() {
                 }
                 if (data.game[10].average != null) {  //gracz jest w grze
                     let game_info = [
-                        { NAME: data.game[0].nickname + " (" + data.game[0].champion + ")", MMR: data.game[0].mmr, TEAM: data.game[0].team, RANK: ucfirst(data.game[0].tier) + " " + data.game[0].rank + " " + data.game[0].leaguePoints + " LP"},
-                        { NAME: data.game[1].nickname + " (" + data.game[1].champion + ")", MMR: data.game[1].mmr, TEAM: data.game[1].team, RANK: ucfirst(data.game[1].tier) + " " + data.game[1].rank + " " + data.game[1].leaguePoints + " LP"},
-                        { NAME: data.game[2].nickname + " (" + data.game[2].champion + ")", MMR: data.game[2].mmr, TEAM: data.game[2].team, RANK: ucfirst(data.game[2].tier) + " " + data.game[2].rank + " " + data.game[2].leaguePoints + " LP"},
-                        { NAME: data.game[3].nickname + " (" + data.game[3].champion + ")", MMR: data.game[3].mmr, TEAM: data.game[3].team, RANK: ucfirst(data.game[3].tier) + " " + data.game[3].rank + " " + data.game[3].leaguePoints + " LP"},
-                        { NAME: data.game[4].nickname + " (" + data.game[4].champion + ")", MMR: data.game[4].mmr, TEAM: data.game[4].team, RANK: ucfirst(data.game[4].tier) + " " + data.game[4].rank + " " + data.game[4].leaguePoints + " LP"},
-                        { NAME: data.game[5].nickname + " (" + data.game[5].champion + ")", MMR: data.game[5].mmr, TEAM: data.game[5].team, RANK: ucfirst(data.game[5].tier) + " " + data.game[5].rank + " " + data.game[5].leaguePoints + " LP"},
-                        { NAME: data.game[6].nickname + " (" + data.game[6].champion + ")", MMR: data.game[6].mmr, TEAM: data.game[6].team, RANK: ucfirst(data.game[6].tier) + " " + data.game[6].rank + " " + data.game[6].leaguePoints + " LP"},
-                        { NAME: data.game[7].nickname + " (" + data.game[7].champion + ")", MMR: data.game[7].mmr, TEAM: data.game[7].team, RANK: ucfirst(data.game[7].tier) + " " + data.game[7].rank + " " + data.game[7].leaguePoints + " LP"},
-                        { NAME: data.game[8].nickname + " (" + data.game[8].champion + ")", MMR: data.game[8].mmr, TEAM: data.game[8].team, RANK: ucfirst(data.game[8].tier) + " " + data.game[8].rank + " " + data.game[8].leaguePoints + " LP"},
-                        { NAME: data.game[9].nickname + " (" + data.game[9].champion + ")", MMR: data.game[9].mmr, TEAM: data.game[9].team, RANK: ucfirst(data.game[9].tier) + " " + data.game[9].rank + " " + data.game[9].leaguePoints + " LP"},
+                        { NAME: data.game[0].nickname + " (" + data.game[0].champion + ")", MMR: data.game[0].mmr, TEAM: data.game[0].team, RANK: ucfirst(data.game[0].tier + " " + data.game[0].rank + " " + data.game[0].leaguePoints + " LP")},
+                        { NAME: data.game[1].nickname + " (" + data.game[1].champion + ")", MMR: data.game[1].mmr, TEAM: data.game[1].team, RANK: ucfirst(data.game[1].tier + " " + data.game[1].rank + " " + data.game[1].leaguePoints + " LP")},
+                        { NAME: data.game[2].nickname + " (" + data.game[2].champion + ")", MMR: data.game[2].mmr, TEAM: data.game[2].team, RANK: ucfirst(data.game[2].tier + " " + data.game[2].rank + " " + data.game[2].leaguePoints + " LP")},
+                        { NAME: data.game[3].nickname + " (" + data.game[3].champion + ")", MMR: data.game[3].mmr, TEAM: data.game[3].team, RANK: ucfirst(data.game[3].tier + " " + data.game[3].rank + " " + data.game[3].leaguePoints + " LP")},
+                        { NAME: data.game[4].nickname + " (" + data.game[4].champion + ")", MMR: data.game[4].mmr, TEAM: data.game[4].team, RANK: ucfirst(data.game[4].tier + " " + data.game[4].rank + " " + data.game[4].leaguePoints + " LP")},
+                        { NAME: data.game[5].nickname + " (" + data.game[5].champion + ")", MMR: data.game[5].mmr, TEAM: data.game[5].team, RANK: ucfirst(data.game[5].tier + " " + data.game[5].rank + " " + data.game[5].leaguePoints + " LP")},
+                        { NAME: data.game[6].nickname + " (" + data.game[6].champion + ")", MMR: data.game[6].mmr, TEAM: data.game[6].team, RANK: ucfirst(data.game[6].tier + " " + data.game[6].rank + " " + data.game[6].leaguePoints + " LP")},
+                        { NAME: data.game[7].nickname + " (" + data.game[7].champion + ")", MMR: data.game[7].mmr, TEAM: data.game[7].team, RANK: ucfirst(data.game[7].tier + " " + data.game[7].rank + " " + data.game[7].leaguePoints + " LP")},
+                        { NAME: data.game[8].nickname + " (" + data.game[8].champion + ")", MMR: data.game[8].mmr, TEAM: data.game[8].team, RANK: ucfirst(data.game[8].tier + " " + data.game[8].rank + " " + data.game[8].leaguePoints + " LP")},
+                        { NAME: data.game[9].nickname + " (" + data.game[9].champion + ")", MMR: data.game[9].mmr, TEAM: data.game[9].team, RANK: ucfirst(data.game[9].tier + " " + data.game[9].rank + " " + data.game[9].leaguePoints + " LP")},
                     ];
                     let table = document.querySelector("table");
                     let headers = Object.keys(game_info[0]);
@@ -176,7 +176,7 @@ function generateTable(table, data) {
 }
 
 function ucfirst(str) {
-    if(str == undefined)
+    if(str == "undefined null null LP")
         return "Unranked";
     var firstLetter = str.substr(0, 1);
     return firstLetter + str.substr(1).toLowerCase();
