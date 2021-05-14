@@ -172,7 +172,7 @@ function generateTable(table, data) {
                 var img = document.createElement("img");
                 var rank = element[key].split(' ')[0]
                 var str = element[key];
-                var name = str.substr(str.indexOf('(') + 1, str.indexOf(')') - 2);
+                var name = str.substr(str.indexOf('(') + 1, str.indexOf(')') - 3);
                 img.src = "http://ddragon.leagueoflegends.com/cdn/11.10.1/img/champion/" + name  + ".png";
                 console.log("http://ddragon.leagueoflegends.com/cdn/11.10.1/img/champion/" + name  + ".png")
                 img.style.width = '25px';
@@ -187,7 +187,7 @@ function generateTable(table, data) {
 }
 
 function ucfirst(str) {
-    if(str == "undefined null null LP")
+    if(str == "null null null LP")
         return "Unranked";
     var firstLetter = str.substr(0, 1);
     return firstLetter + str.substr(1, str.indexOf(' ')).toLowerCase() + str.substr(str.indexOf(' ') + 1);
