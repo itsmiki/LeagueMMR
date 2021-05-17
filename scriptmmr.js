@@ -204,7 +204,8 @@ function ucfirst(str) {
 function read()  
 {  
      var txtFile = new XMLHttpRequest();  
-     txtFile.open("GET", "server_address.txt", true);  
+     txtFile.open("GET", "https://github.com/itsmiki/itsmiki.github.io/blob/main/server_address.txt", true);
+     console.log("funkcja")
      txtFile.onreadystatechange = function()   
      {  
           if (txtFile.readyState === 4)   
@@ -212,8 +213,9 @@ function read()
                // Makes sure the document is ready to parse.  
                if (txtFile.status === 200)   
                {  
-                    // Makes sure it's found the file.  
-                    document.getElementById("api_url").innerHTML = txtFile.responseText;  
+                    // Makes sure it's found the file. 
+                    console.log("działa");
+                    document.getElementById("api_url").href = txtFile.responseText;  
                }  
           }  
      }  
