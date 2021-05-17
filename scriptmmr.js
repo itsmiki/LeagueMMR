@@ -204,7 +204,7 @@ function ucfirst(str) {
 function read()  
 {  
      var txtFile = new XMLHttpRequest();  
-     txtFile.open("GET", "https://github.com/itsmiki/itsmiki.github.io/blob/main/server_address.txt", true);
+     txtFile.open("GET", "https://itsmiki.github.io/server_address.txt", true);
      console.log("funkcja")
      txtFile.onreadystatechange = function()   
      {  
