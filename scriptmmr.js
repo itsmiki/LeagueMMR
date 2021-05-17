@@ -200,3 +200,22 @@ function ucfirst(str) {
     var firstLetter = str.substr(0, 1);
     return firstLetter + str.substr(1, str.indexOf(' ')).toLowerCase() + str.substr(str.indexOf(' ') + 1);
 }
+
+function read()  
+{  
+     var txtFile = new XMLHttpRequest();  
+     txtFile.open("GET", "server_address.txt", true);  
+     txtFile.onreadystatechange = function()   
+     {  
+          if (txtFile.readyState === 4)   
+          {  
+               // Makes sure the document is ready to parse.  
+               if (txtFile.status === 200)   
+               {  
+                    // Makes sure it's found the file.  
+                    document.getElementById("api_url").innerHTML = txtFile.responseText;  
+               }  
+          }  
+     }  
+     txtFile.send(null)  
+}  
