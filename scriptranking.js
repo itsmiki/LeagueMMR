@@ -89,8 +89,12 @@ function time() {
             console.log("Something went wrong!", err);
         });
 }
-
 function load() {
+    setTimeout(load, 500)
+}
+
+
+function load1() {
     var Parent = document.getElementById('ranking_text');
     document.getElementById("search_ranking_button").disabled = true; 
     while(Parent.hasChildNodes())
