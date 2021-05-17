@@ -90,13 +90,13 @@ function time() {
         });
 }
 function load() {
-    setTimeout(load, 500)
+    document.getElementById("search_ranking_button").disabled = true; 
+    setTimeout(load1, 500)
 }
 
 
 function load1() {
     var Parent = document.getElementById('ranking_text');
-    document.getElementById("search_ranking_button").disabled = true; 
     while(Parent.hasChildNodes())
     {
         Parent.removeChild(Parent.firstChild);
