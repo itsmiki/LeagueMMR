@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="sheet.css">
+    </head>
+    <title>Ranking</title>
+<body onload="load(); time(); update()" style="padding:0;">
+
+    <div class="topnav">
+        <a class="page_title">League of Legends</a>
+        <a href="index_old.html">Game MMR</a>
+        <a class="active">Ranking</a>
+        <a href="ranking.html">New Version</a>
+        <a href="">Contact</a>
+        <a href="">About</a>
+    </div>
+    <h1 class="default_margin">Ranking</h1>
+    <p id="time" class="default_margin"></p>
+    <a hidden id="get_time"></a>  <!-- hidden -->
+
+    <button class="default_margin" id="search_ranking_button" onclick="refresh()"> Refresh </button><br>
+    <a id="api_url" href="https://purple-firefox-94.loca.lt"></a>  <!-- hidden -->
+    <script src="scriptranking.js"></script>
+    <div id="ranking_text" class="default_margin"></div>
+
+    <br><div id="chartContainer" style="height: 370px; width: 60%;" class="default_margin"></div>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+</body>
+</html>

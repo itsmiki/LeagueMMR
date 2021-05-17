@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="sheet.css">
+    </head>
+    <title>LoL Game MMR</title>
+<body onload="getkey(); getip()" style="padding:0;">
+        
+    <div class="topnav">
+        <a class="page_title">League of Legends</a>
+        <a class="active">Game MMR</a>
+        <a href="ranking_old.html">Ranking</a>
+        <a href="index.html">New Version</a>
+        <a href="">Contact</a>
+        <a href="">About</a>
+    </div> 
+      
+    <h1 class="default_margin">Game MMR</h1>
+
+    <p class="default_margin">It may take up to 1 minute for server to respond.</p>
+    <a id="api_url" href="https://purple-firefox-94.loca.lt"></a>
+    <a hidden id="api_key"></a>  <!-- hidden -->
+    <a hidden id="ip"></a>  <!-- hidden -->
+
+    <a class="default_margin">Name: </a><input id="summoner_name" placeholder="Search..."><br><br>
+
+    <label class="default_margin" for="region_label"> Region: </label>
+        <select name="region" id="region">
+        <option value="eune"> EUNE </option>
+        <option value="euw"> EUW </option>
+        <option value="na"> NA </option>
+    </select> 
+
+    <button id="search_mmr_button" onclick="ask()"> Search </button><br>
+    
+    <table class="minimalistBlack default_margin" id="mmr_table"> </table>
+    <p class="default_margin" id="average"></p>
+    <!-- <img src="photos/platyna.png" width="30px"> -->
+
+    <script src="scriptmmr.js"></script> 
+
+
+
+</body>
+</html>
