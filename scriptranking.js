@@ -146,7 +146,7 @@ function chart(data) {
         { label: " ", y: 0},
         { label: data.ranking[0]['RANKED_FLEX_SR']['nickname'] + '  FLEX [' + data.ranking[0]['RANKED_FLEX_SR']['tier'] + ' ' + data.ranking[0]['RANKED_FLEX_SR']['rank'] + ' ' + data.ranking[0]['RANKED_FLEX_SR']['leaguePoints'] + ' LP]', y: count(data, 0, 'RANKED_FLEX_SR'), color: get_color(data.ranking[0]['RANKED_FLEX_SR']['tier'])},
         { label: data.ranking[1]['RANKED_FLEX_SR']['nickname'] + '  FLEX [' + data.ranking[1]['RANKED_FLEX_SR']['tier'] + ' ' + data.ranking[1]['RANKED_FLEX_SR']['rank'] + ' ' + data.ranking[1]['RANKED_FLEX_SR']['leaguePoints'] + ' LP]', y: count(data, 1, 'RANKED_FLEX_SR'), color: get_color(data.ranking[1]['RANKED_FLEX_SR']['tier'])},
-        { label: data.ranking[2]['RANKED_FLEX_SR']['nickname'] + '  FLEX [' + data.ranking[2]['RANKED_FLEX_SR']['tier'] + ' ' + data.ranking[2]['RANKED_FLEX_SR']['rank'] + ' ' + data.ranking[2]['RANKED_FLEX_SR']['leaguePoints'] + ' LP]', y: count(data, 2, 'RANKED_FLEX_SR'), color: get_color(data.ranking[2]['RANKED_FLEX_SR']['tier'])},
+        { label: data.ranking[2]['RANKED_FLEX_SR']['nickname'] + '  FLEX [' + data.ranking[2]['RANKED_FLEX_SR']['tier'] + ' ' + data.ranking[2]['RANKED_FLEX_SR']['rank'] + ' ' + data.ranking[2]['RANKED_FLEX_SR']['leaguePoints'] + ' LP]', y: count(data, 2, 'RANKED_FLEX_SR'), color: get_color("BRONZE")},
         { label: data.ranking[3]['RANKED_FLEX_SR']['nickname'] + '  FLEX [' + data.ranking[3]['RANKED_FLEX_SR']['tier'] + ' ' + data.ranking[3]['RANKED_FLEX_SR']['rank'] + ' ' + data.ranking[3]['RANKED_FLEX_SR']['leaguePoints'] + ' LP]', y: count(data, 3, 'RANKED_FLEX_SR'), color: get_color(data.ranking[3]['RANKED_FLEX_SR']['tier'])},
         ]
     }]
@@ -210,6 +210,27 @@ function get_color(rank) {
     }
     return color;
 }
+
+function read()  
+{  
+     var txtFile = new XMLHttpRequest();  
+     txtFile.open("GET", "https://github.com/itsmiki/itsmiki.github.io/blob/main/server_address.txt", true);
+     console.log("funkcja")
+     txtFile.onreadystatechange = function()   
+     {  
+          if (txtFile.readyState === 4)   
+          {  
+               // Makes sure the document is ready to parse.  
+               if (txtFile.status === 200)   
+               {  
+                    // Makes sure it's found the file. 
+                    console.log("działa");
+                    document.getElementById("api_url").href = txtFile.responseText;  
+               }  
+          }  
+     }  
+     txtFile.send(null)  
+}  
 
 
 
