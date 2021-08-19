@@ -1,4 +1,3 @@
-
 function update() {
     setInterval(update2, 1000)
 }
@@ -65,6 +64,11 @@ function refresh() {
 }
 
 function time() {
+    setTimeout(time1, 100)
+}
+
+
+function time1() {
     var URL = document.getElementById("api_url").href
     fetch(URL + '/api/v1/ranking/time',
         {headers: {'Bypass-Tunnel-Reminder': 'application/json'}})
