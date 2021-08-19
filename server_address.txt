@@ -1,1 +1,1 @@
-https://190ac2a73006.ngrok.io
+https://leaguemmrapi.herokuapp.com/
