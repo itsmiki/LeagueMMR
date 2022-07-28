@@ -61,8 +61,8 @@ function ask() {
     var URL = document.getElementById("api_url").href
     var key = document.getElementById("api_key").innerHTML
     console.log(key)
-    console.log(URL + '/api/v1/gamemmr?name=' + name + '&region=' + region + '&apikey=' + key)
-    fetch( URL + '/api/v1/gamemmr?name=' + name + '&region=' + region + '&apikey=' + key, 
+    console.log(URL + '/api/v2/gamemmr?name=' + name + '&region=' + region + '&apikey=' + key)
+    fetch( URL + '/api/v2/gamemmr?name=' + name + '&region=' + region + '&apikey=' + key, 
         {headers: {'Bypass-Tunnel-Reminder': document.getElementById("ip").innerHTML}})
         .then(function (response) {
             response.json().then(data => {
@@ -181,8 +181,8 @@ function generateTable(table, data) {
                 }
                 name = name.replace(/\s+/g, '')
                 name = name.replace(/`+/g, '')
-                img.src = "http://ddragon.leagueoflegends.com/cdn/11.10.1/img/champion/" + name + ".png";
-                console.log("http://ddragon.leagueoflegends.com/cdn/11.10.1/img/champion/" + name  + ".png")
+                img.src = "http://ddragon.leagueoflegends.com/cdn/12.14.1/img/champion/" + name + ".png";
+                console.log("http://ddragon.leagueoflegends.com/cdn/12.14.1/img/champion/" + name  + ".png")
                 img.style.width = '25px';
                 img.style.height = 'auto';
                 cell.appendChild(img);

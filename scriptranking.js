@@ -42,7 +42,7 @@ function refresh() {
         Parent.removeChild(Parent.firstChild);
     }
     var URL = document.getElementById("api_url").href
-    fetch(URL + '/api/v1/ranking/refresh',
+    fetch(URL + '/api/v2/ranking/refresh', //CHANGE
         {headers: {'Bypass-Tunnel-Reminder': 'application/json'}})
         .then(function (response) {
             response.json().then(data => {
@@ -70,6 +70,7 @@ function time() {
 
 function time1() {
     var URL = document.getElementById("api_url").href
+    console.log(URL)
     fetch(URL + '/api/v1/ranking/time',
         {headers: {'Bypass-Tunnel-Reminder': 'application/json'}})
         .then(function (response) {
@@ -121,6 +122,12 @@ function load1() {
 
 
 function chart(data) {
+    let temp_dataPoints = []
+    for(let i = 0; i < data.ranking.length; i++ ) {
+        queue_type = Object.keys(data.ranking[i])[0];
+        temp = { label: data.ranking[i][queue_type]['nickname'] + '  SOLO/DUO [' + data.ranking[i][queue_type]['tier'] + ' ' + data.ranking[i][queue_type]['rank'] + ' ' + data.ranking[i][queue_type]['leaguePoints'] + ' LP]', y: count(data, i, queue_type), color: get_color(data.ranking[i][queue_type]['tier'])}
+        temp_dataPoints.push(temp)
+    }
     var chart = new CanvasJS.Chart("chartContainer", {
     theme: "light1", // "light1", "light2", "dark1"
     animationEnabled: true,
@@ -146,17 +153,18 @@ function chart(data) {
         axisYType: "secondary",
         //yValueFormatString: "#,###.##LP",
         //indexLabel: "{y}",
-        dataPoints: [
-        { label: data.ranking[0]['RANKED_SOLO_5x5']['nickname'] + '  SOLO/DUO [' + data.ranking[0]['RANKED_SOLO_5x5']['tier'] + ' ' + data.ranking[0]['RANKED_SOLO_5x5']['rank'] + ' ' + data.ranking[0]['RANKED_SOLO_5x5']['leaguePoints'] + ' LP]', y: count(data, 0, 'RANKED_SOLO_5x5'), color: get_color(data.ranking[0]['RANKED_SOLO_5x5']['tier'])},
-        { label: data.ranking[1]['RANKED_SOLO_5x5']['nickname'] + '  SOLO/DUO [' + data.ranking[1]['RANKED_SOLO_5x5']['tier'] + ' ' + data.ranking[1]['RANKED_SOLO_5x5']['rank'] + ' ' + data.ranking[1]['RANKED_SOLO_5x5']['leaguePoints'] + ' LP]', y: count(data, 1, 'RANKED_SOLO_5x5'), color: get_color(data.ranking[1]['RANKED_SOLO_5x5']['tier'])},
-        { label: data.ranking[2]['RANKED_SOLO_5x5']['nickname'] + '  SOLO/DUO [' + data.ranking[2]['RANKED_SOLO_5x5']['tier'] + ' ' + data.ranking[2]['RANKED_SOLO_5x5']['rank'] + ' ' + data.ranking[2]['RANKED_SOLO_5x5']['leaguePoints'] + ' LP]', y: count(data, 2, 'RANKED_SOLO_5x5'), color: get_color(data.ranking[2]['RANKED_SOLO_5x5']['tier'])},
-        { label: data.ranking[3]['RANKED_SOLO_5x5']['nickname'] + '  SOLO/DUO [' + data.ranking[3]['RANKED_SOLO_5x5']['tier'] + ' ' + data.ranking[3]['RANKED_SOLO_5x5']['rank'] + ' ' + data.ranking[3]['RANKED_SOLO_5x5']['leaguePoints'] + ' LP]', y: count(data, 3, 'RANKED_SOLO_5x5'), color: get_color(data.ranking[3]['RANKED_SOLO_5x5']['tier'])},
-        { label: " ", y: 0},
-        { label: data.ranking[0]['RANKED_FLEX_SR']['nickname'] + '  FLEX [' + data.ranking[0]['RANKED_FLEX_SR']['tier'] + ' ' + data.ranking[0]['RANKED_FLEX_SR']['rank'] + ' ' + data.ranking[0]['RANKED_FLEX_SR']['leaguePoints'] + ' LP]', y: count(data, 0, 'RANKED_FLEX_SR'), color: get_color(data.ranking[0]['RANKED_FLEX_SR']['tier'])},
-        { label: data.ranking[1]['RANKED_FLEX_SR']['nickname'] + '  FLEX [' + data.ranking[1]['RANKED_FLEX_SR']['tier'] + ' ' + data.ranking[1]['RANKED_FLEX_SR']['rank'] + ' ' + data.ranking[1]['RANKED_FLEX_SR']['leaguePoints'] + ' LP]', y: count(data, 1, 'RANKED_FLEX_SR'), color: get_color(data.ranking[1]['RANKED_FLEX_SR']['tier'])},
-        { label: data.ranking[2]['RANKED_FLEX_SR']['nickname'] + '  FLEX [' + data.ranking[2]['RANKED_FLEX_SR']['tier'] + ' ' + data.ranking[2]['RANKED_FLEX_SR']['rank'] + ' ' + data.ranking[2]['RANKED_FLEX_SR']['leaguePoints'] + ' LP]', y: count(data, 2, 'RANKED_FLEX_SR'), color: get_color("BRONZE")},
-        { label: data.ranking[3]['RANKED_FLEX_SR']['nickname'] + '  FLEX [' + data.ranking[3]['RANKED_FLEX_SR']['tier'] + ' ' + data.ranking[3]['RANKED_FLEX_SR']['rank'] + ' ' + data.ranking[3]['RANKED_FLEX_SR']['leaguePoints'] + ' LP]', y: count(data, 3, 'RANKED_FLEX_SR'), color: get_color(data.ranking[3]['RANKED_FLEX_SR']['tier'])},
-        ]
+        // dataPoints: [
+        // { label: data.ranking[0]['RANKED_SOLO_5x5']['nickname'] + '  SOLO/DUO [' + data.ranking[0]['RANKED_SOLO_5x5']['tier'] + ' ' + data.ranking[0]['RANKED_SOLO_5x5']['rank'] + ' ' + data.ranking[0]['RANKED_SOLO_5x5']['leaguePoints'] + ' LP]', y: count(data, 0, 'RANKED_SOLO_5x5'), color: get_color(data.ranking[0]['RANKED_SOLO_5x5']['tier'])} ,
+        // { label: data.ranking[1]['RANKED_SOLO_5x5']['nickname'] + '  SOLO/DUO [' + data.ranking[1]['RANKED_SOLO_5x5']['tier'] + ' ' + data.ranking[1]['RANKED_SOLO_5x5']['rank'] + ' ' + data.ranking[1]['RANKED_SOLO_5x5']['leaguePoints'] + ' LP]', y: count(data, 1, 'RANKED_SOLO_5x5'), color: get_color(data.ranking[1]['RANKED_SOLO_5x5']['tier'])},
+        // { label: data.ranking[2]['RANKED_SOLO_5x5']['nickname'] + '  SOLO/DUO [' + data.ranking[2]['RANKED_SOLO_5x5']['tier'] + ' ' + data.ranking[2]['RANKED_SOLO_5x5']['rank'] + ' ' + data.ranking[2]['RANKED_SOLO_5x5']['leaguePoints'] + ' LP]', y: count(data, 2, 'RANKED_SOLO_5x5'), color: get_color(data.ranking[2]['RANKED_SOLO_5x5']['tier'])},
+        // { label: data.ranking[3]['RANKED_SOLO_5x5']['nickname'] + '  SOLO/DUO [' + data.ranking[3]['RANKED_SOLO_5x5']['tier'] + ' ' + data.ranking[3]['RANKED_SOLO_5x5']['rank'] + ' ' + data.ranking[3]['RANKED_SOLO_5x5']['leaguePoints'] + ' LP]', y: count(data, 3, 'RANKED_SOLO_5x5'), color: get_color(data.ranking[3]['RANKED_SOLO_5x5']['tier'])},
+        // { label: " ", y: 0},
+        // { label: data.ranking[0]['RANKED_FLEX_SR']['nickname'] + '  FLEX [' + data.ranking[0]['RANKED_FLEX_SR']['tier'] + ' ' + data.ranking[0]['RANKED_FLEX_SR']['rank'] + ' ' + data.ranking[0]['RANKED_FLEX_SR']['leaguePoints'] + ' LP]', y: count(data, 0, 'RANKED_FLEX_SR'), color: get_color(data.ranking[0]['RANKED_FLEX_SR']['tier'])},
+        // { label: data.ranking[1]['RANKED_FLEX_SR']['nickname'] + '  FLEX [' + data.ranking[1]['RANKED_FLEX_SR']['tier'] + ' ' + data.ranking[1]['RANKED_FLEX_SR']['rank'] + ' ' + data.ranking[1]['RANKED_FLEX_SR']['leaguePoints'] + ' LP]', y: count(data, 1, 'RANKED_FLEX_SR'), color: get_color(data.ranking[1]['RANKED_FLEX_SR']['tier'])},
+        // { label: data.ranking[2]['RANKED_FLEX_SR']['nickname'] + '  FLEX [' + data.ranking[2]['RANKED_FLEX_SR']['tier'] + ' ' + data.ranking[2]['RANKED_FLEX_SR']['rank'] + ' ' + data.ranking[2]['RANKED_FLEX_SR']['leaguePoints'] + ' LP]', y: count(data, 2, 'RANKED_FLEX_SR'), color: get_color("BRONZE")},
+        // { label: data.ranking[3]['RANKED_FLEX_SR']['nickname'] + '  FLEX [' + data.ranking[3]['RANKED_FLEX_SR']['tier'] + ' ' + data.ranking[3]['RANKED_FLEX_SR']['rank'] + ' ' + data.ranking[3]['RANKED_FLEX_SR']['leaguePoints'] + ' LP]', y: count(data, 3, 'RANKED_FLEX_SR'), color: get_color(data.ranking[3]['RANKED_FLEX_SR']['tier'])},
+        // ]
+        dataPoints: temp_dataPoints.sort()
     }]
     });
     chart.render();
@@ -222,7 +230,7 @@ function get_color(rank) {
 function read()  
 {  
      var txtFile = new XMLHttpRequest();  
-     txtFile.open("GET", "https://itsmiki.github.io/server_address.txt", true);
+     txtFile.open("GET", "https://itsmiki.github.io/server_address.txt", true); // ZMIANA https://itsmiki.github.io/server_address.txt
      console.log("funkcja")
      txtFile.onreadystatechange = function()   
      {  
@@ -239,90 +247,3 @@ function read()
      }  
      txtFile.send(null)  
 }  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// https://eun1.api.riotgames.com/lol/league/v4/entries/by-summoner/uX0sDT_aEj4CzpYItA-aGDtRXFagBvcR2E5-ZlIUyUWZY0U?api_key={api key}
-
-// //Meth is Good - uX0sDT_aEj4CzpYItA-aGDtRXFagBvcR2E5-ZlIUyUWZY0U
-
-// //4566769 - L4yCUrElQv0XcnI6j6NC5hb3j69Q1Dt7_f-vegU-4-todP4
-
-// //4566768 - IRBxAbwyDZOKzZtbIsafRS-tkH-jffp7-ZACmzzjeNxHHCs
-
-// //DzikUPL - Lsg8ZfPprweVAVQgnjuozV9QErLxO2ue9SAXzrTHFVqDI2c
-
-// var api_key = "RGAPI-5d1c853f-8d87-4ae7-ad72-4c037744a9f2";
-// var miki = "uX0sDT_aEj4CzpYItA-aGDtRXFagBvcR2E5-ZlIUyUWZY0U";
-// var kacper = "Lsg8ZfPprweVAVQgnjuozV9QErLxO2ue9SAXzrTHFVqDI2c";
-// var czarek = "IRBxAbwyDZOKzZtbIsafRS-tkH-jffp7-ZACmzzjeNxHHCs";
-// var michal = "L4yCUrElQv0XcnI6j6NC5hb3j69Q1Dt7_f-vegU-4-todP4";
-
-// var array = []
-
-// function ask(name, id, key) {
-//     console.log('https://eun1.api.riotgames.com/lol/league/v4/entries/by-summoner/' + id + '?api_key=' + key)
-//     var Parent = document.getElementById('ranking_text'); 
-//     while(Parent.hasChildNodes())
-//     {
-//         Parent.removeChild(Parent.firstChild);
-//     }
-//     // fetch('https://pumpkin-pie-66118.herokuapp.com/https://eun1.api.riotgames.com/lol/league/v4/entries/by-summoner/' + id + '?api_key=' + key)
-//     //     .then(function (response) {
-//     //         response.json().then(data => {
-//     //             var solo_tier = data[0].tier;
-//     //             var solo_rank = data[0].rank;
-//     //             var solo_lp = data[0].leaguePoints;
-//     //             var flex_tier = data[1].tier;
-//     //             var flex_rank = data[1].rank;
-//     //             let p = document.createElement("p");
-//     //             var text = document.createTextNode(name + ' ' + solo_tier + ' ' + solo_rank + ' ' + solo_lp + 'lp');
-//     //             p.appendChild(text);
-//     //             let div = document.getElementById("ranking_text");
-//     //             div.appendChild(p);
-//     //             save([name, solo_tier, solo_rank, solo_lp])
-//     //         });
-//     //     })
-//     //     .catch(function (err) {
-//     //         console.log("Something went wrong!", err);
-//     //     });
-
-//         Promise.all([
-//             fetch('https://pumpkin-pie-66118.herokuapp.com/https://eun1.api.riotgames.com/lol/league/v4/entries/by-summoner/' + id + '?api_key=' + key),
-//             fetch('https://pumpkin-pie-66118.herokuapp.com/https://eun1.api.riotgames.com/lol/league/v4/entries/by-summoner/' + id + '?api_key=' + key),
-//             fetch('https://pumpkin-pie-66118.herokuapp.com/https://eun1.api.riotgames.com/lol/league/v4/entries/by-summoner/' + id + '?api_key=' + key),
-//             fetch('https://pumpkin-pie-66118.herokuapp.com/https://eun1.api.riotgames.com/lol/league/v4/entries/by-summoner/' + id + '?api_key=' + key),
-//         ]).then(function (responses) {
-//             // Get a JSON object from each of the responses
-//             Promise.all(responses.map(function (response) {
-//                 response.json().then( data => {
-//                     console.log(responses[0]);
-//                 })
-//             })
-//             )
-//         }).catch(function (error) {
-//             // if there's an error, log it
-//             console.log(error);
-//         });
-        
-// }
-
-// function save(array1) {
-//     array.push(array1);
-//     console.log(array);
-// }
