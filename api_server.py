@@ -9,7 +9,7 @@ CORS(app)
 
 app.config['JSON_AS_ASCII'] = False
 
-api_key = ''
+api_key = 'RGAPI-131123aa-999a-4857-aa6b-d8601ba1bfdc'
 API_KEYS = {}
 
 @app.route('/', methods=['GET'])
@@ -21,7 +21,7 @@ def home():
 def get_key():
     import string
     import random
-    request_ip = request.headers.get('Bypass-Tunnel-Reminder')
+    request_ip = request.remote_addr
     # print(request_ip)
     for key1, ip1 in API_KEYS.items(): 
         if ip1[0] == request_ip:
@@ -473,7 +473,7 @@ def api_mmr_v2():
         try:
             apikey = name = str(request.args['apikey'])
             if apikey != 'MASTER_KEY':
-                request_ip = request.headers.get('Bypass-Tunnel-Reminder')
+                request_ip = request.remote_addr
                 #print(API_KEYS)
                 if API_KEYS[apikey][0] != request_ip:
                     return jsonify({'error': 403}) #klucz nie pasuje do ip
