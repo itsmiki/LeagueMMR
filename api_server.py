@@ -9,7 +9,7 @@ CORS(app)
 
 app.config['JSON_AS_ASCII'] = False
 
-api_key = 'RGAPI-131123aa-999a-4857-aa6b-d8601ba1bfdc'
+api_key = ''
 API_KEYS = {}
 
 @app.route('/', methods=['GET'])
