@@ -35,7 +35,7 @@ function close_element(element_id) {
 function getip() {
     var URL = document.getElementById("api_url").href
     fetch('https://api.my-ip.io/ip.json',
-        {headers: {'Bypass-Tunnel-Reminder': 'application/json'}})
+        {headers: {'Bypass-Tunnel-Reminder': 'application/json', 'mode': 'no-cors'}})
         .then(function (response) {
             response.json().then(data => {
                 document.getElementById("ip").innerHTML = data.ip
